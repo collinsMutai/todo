@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./index.css" rel="stylesheet" type="text/css" />
+    <title>Todo App</title>
+  </head>
+  <body>
+    <div class="todo-card">
+      <div class="todo-title">
+        <h1>To do List</h1>
+      </div>
+      <div>
+        <form id="form" action="" method="post">
+          <input name="text" placeholder="Title" id="title" />
+          <input name="text" placeholder="Description" id="description" />
+          <input name="date" type="date" placeholder="" id="date" />
+          <button type="submit" id="addBtn">Add</button>
+          <button type="submit" hidden id="editBtn">Edit</button>
+        </form>
+      </div>
+    </div>
+    <h2>My Tasks</h2>
+    <div id="tasksList">
+      <!-- <tr class="incomplete" id="taskDone">
+            <td ><input onclick="completeTask(${index})" type="checkbox" id="checkbox" name="checkbox"/></td>
+            <td id="titleText">${item.title}</td>
+            <td id="descriptionText" >${item.description}</td>
+            <td id="dateText">${item.date}</td>
+            <td><button onclick="editTask(${index})"   id="editBtn">Edit</button></td>
+            <td><button onclick="deleteTask(${index})" id="deleteBtn">Delete</button></td>
+        </tr> -->
+      <!-- <div class="todo-items">
+            <ul style="list-style: none;">
+                <li><span onclick="completeTask(${index})" id="checkmark" style="padding-right: 10px;">
+                    <input type="checkbox" /></span>
+                    <span style="padding-right: 10px;" id="titleText">${item.title}</span>
+                    <span id="descriptionText">${item.description}</span>
+                    <span id="dateText">${item.date}</span>
+                    <span id="editBtn" style="padding-left: 10px;">
+                    <button id="editBtn" type="submit">onclick="editTask(${index})"</button>
+                    </span><span><button id="deleteBtn" type="submit">onclick="deleteTask(${index})"</button>
+                    </span>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+
+    <hr />
+    <h2>Completed Tasks</h2>
+    <div id="completedTodos"></div>
+    <script src="./index.js"></script>
+  </body>
+</html>
