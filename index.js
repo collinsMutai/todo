@@ -43,26 +43,26 @@ const paintHtmlToDom = (data, id) => {
   const html = data
     .map((item, index) => {
       let htmlCode = `
-    <div class="todo-items">
-    <ul style="list-style: none;">
-        <li id="taskDone">
-            <span  id="checkmark" style="padding-right: 10px;">
-              <input ${
-                data.completed ? "checked" : ""
-              } onchange="completeTask(this, ${index})" type="checkbox" />
-            </span>
-            <span style="padding-right: 10px;" id="titleText">${
-              item.title
-            }</span>
-            <span id="descriptionText">${item.description}</span>
-            <span id="dateText">${item.date}</span>
-            <span id="editBtn" style="padding-left: 10px;">
-            <button id="editBtn" onclick="editTask(${index})" type="submit">Edit</button>
-            </span><span><button onclick="deleteTask(${index})" id="deleteBtn" type="submit">Delete </button>
-            </span>
-        </li>
-    </ul>
-</div>
+          <div class="todo-items">
+          <ul style="list-style: none;">
+              <li id="taskDone">
+                  <span  id="checkmark" style="padding-right: 10px;">
+                    <input ${
+                      data.completed ? "checked" : ""
+                    } onchange="completeTask(this, ${index})" type="checkbox" />
+                  </span>
+                  <span style="padding-right: 10px;" id="titleText">${
+                    item.title
+                  }</span>
+                  <span id="descriptionText">${item.description}</span>
+                  <span id="dateText">${item.date}</span>
+                  <span id="editBtn" style="padding-left: 10px;">
+                  <button id="editBtn" onclick="editTask(${index})" type="submit">Edit</button>
+                  </span><span><button onclick="deleteTask(${index})" id="deleteBtn" type="submit">Delete </button>
+                  </span>
+              </li>
+          </ul>
+      </div>
       `;
       return htmlCode;
     })
@@ -99,15 +99,17 @@ function editTask(id) {
   addBtn.style.display = "none";
   editBtn.style.display = "block";
 
-  editBtn.addEventListener("click", (event) => {
+  const clickHandler = (event) => {
     event.preventDefault();
     updateTask(id, {
       title: title.value,
       description: description.value,
       date: date.value,
     });
+    editBtn.removeEventListener("click", clickHandler)
     addHtml();
-  });
+  };
+  editBtn.addEventListener("click", clickHandler);
 }
 
 function deleteTask(id) {
